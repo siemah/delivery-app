@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-import InputField from '../widgets/InputField'
-import Button from '../widgets/Button'
+import InputField from '../widgets/InputField';
+import Button from '../widgets/Button';
+
+import user from '../../utils/data/user';
 
 const CREDENTIALS = {
   fname: null,
@@ -17,6 +19,7 @@ export default function Register() {
   const onSubmit = e => {
     e.preventDefault();
     console.table(credentials);
+    user.register(credentials);
   }
 
   return (
