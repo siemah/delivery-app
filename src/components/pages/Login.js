@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import InputField from '../widgets/InputField';
 import Button from '../widgets/Button';
 
-//import { register } from '../../store/actions/authActions';
+//import { login } from '../../store/actions/authActions';
 
 const CREDENTIALS = {
   email: null,
