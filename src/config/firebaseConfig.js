@@ -3,7 +3,7 @@ import * as firebase from "firebase/app";
 
 // Add the Firebase products that you want to use
 import "firebase/auth";
-import "firebase/firestore";
+//import "firebase/firestore";
 
 var firebaseConfig = {
   apiKey: "AIzaSyB65j-iV8LzmuPTTiUK9-yfp0w6Js1-z30",

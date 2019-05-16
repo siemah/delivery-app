@@ -2,13 +2,15 @@ import firebase from '../../config/firebaseConfig';
 
 const user = {
 
-  async register({ email, password }) {
-    try {
-      firebase.auth()
-        .createUserWithEmailAndPassword( email, password );
-    } catch (error) {
-      throw new Error()
-    }
+  register({ email, password }) {
+    return firebase.auth()
+      .createUserWithEmailAndPassword( email, password );
+  },
+  setUserProfile(user, displayName, photoURL="") {
+    return user.updateProfile({
+      displayName,
+      photoURL,
+    })
   }
 
 }

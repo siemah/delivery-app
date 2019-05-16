@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, } from 'react';
+import { connect } from 'react-redux'
 
 import InputField from '../widgets/InputField';
 import Button from '../widgets/Button';
 
-import user from '../../utils/data/user';
+import { register } from '../../store/actions/authActions';
 
 const CREDENTIALS = {
   fname: null,
@@ -13,13 +14,17 @@ const CREDENTIALS = {
   confPassword: null,
 }
 
-export default function Register() {
-  const [credentials, setCredentials] = useState(CREDENTIALS);
+const Register = ({ register, history, }) => {
+
+  const [ credentials, setCredentials ] = useState(CREDENTIALS);
   const onChange = ({target}) => setCredentials(state => ({...state, [target.name]: target.value}))
+  const doneRegister = () => {
+    history.push('/');
+  }
+
   const onSubmit = e => {
     e.preventDefault();
-    console.table(credentials);
-    user.register(credentials);
+    register(credentials, doneRegister);
   }
 
   return (
@@ -33,3 +38,17 @@ export default function Register() {
     </form>
   )
 }
+
+const mapStateToProps = ({ user }, ownProps) => {
+  return {
+    user,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    register: (credentials,cb=null) => dispatch(register(credentials, cb)),
+  }
+}
+
+export default connect( mapStateToProps, mapDispatchToProps )( Register );
