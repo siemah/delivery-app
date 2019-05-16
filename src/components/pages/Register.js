@@ -14,7 +14,7 @@ const CREDENTIALS = {
   confPassword: null,
 }
 
-const Register = ({ register, history, }) => {
+const RegisterPage = ({ register, history, }) => {
 
   const [ credentials, setCredentials ] = useState(CREDENTIALS);
   const onChange = ({target}) => setCredentials(state => ({...state, [target.name]: target.value}))
@@ -51,4 +51,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect( mapStateToProps, mapDispatchToProps )( Register );
+export default connect( mapStateToProps, mapDispatchToProps )( RegisterPage );
