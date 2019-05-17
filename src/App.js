@@ -5,6 +5,7 @@ import RegisterPage from './components/pages/Register';
 import LoginPage from './components/pages/Login';
 
 import GuestRoute from './routes/GuestRoute';
+import AuthRoute from './routes/AuthRoute';
 // dont forget to pass a location object to GuestRoute and AuthRoute 
 // to avoid weird thing happen when redux work with react-router-dom
 const App = () => {
@@ -12,7 +13,7 @@ const App = () => {
     <Router>
       <Switch>
         <GuestRoute path='/register' component={RegisterPage} />
-        <Route path='/login' component={LoginPage} />
+        <GuestRoute path='/login' component={LoginPage} />
       </Switch>
     </Router>
   );
