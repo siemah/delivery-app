@@ -1,7 +1,10 @@
 const initialState = {
-  fname: null,
-  lname: null,
+  displayName: null,
   email: null,
+  photoURL: null,
+  emailVerified: null, 
+  refreshToken: null,
+  uid: null,
 }
 
 export const registerReducer = (state = initialState, { type, payload }) => {
@@ -15,7 +18,7 @@ export const registerReducer = (state = initialState, { type, payload }) => {
     case 'POST_FULLFILED_REGISTER': 
       return {
         ...state,
-        user: payload.user,
+        ...payload,
       }
     case 'POST_REJECTED_REGISTER': 
       return {
@@ -31,7 +34,7 @@ export const registerReducer = (state = initialState, { type, payload }) => {
     case 'POST_FULLFILED_LOGIN': 
       return {
         ...state,
-        user: payload.user,
+        ...payload,
       }
     case 'POST_REJECTED_LOGIN': 
       return {

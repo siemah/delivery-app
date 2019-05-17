@@ -13,11 +13,19 @@ export const register = (credentials, cb=null) => async (dispatch, getState) => 
   } else {
     try {
       let { user } = await userApi.register({ email, password });
+      let { email: userEmail, emailVerified, refreshToken, uid, photoURL } = user;
+
       await userApi.setUserProfile(user, `${fname} ${lname}`);
-      dispatch({ type: 'POST_FULLFILED_REGISTER', payload: { user } });
+
+      dispatch({ 
+        type: 'POST_FULLFILED_REGISTER', 
+        payload: { email: userEmail, emailVerified, refreshToken, uid, photoURL, displayName: `${fname} ${lname}` } 
+      });
       if( cb ) cb();
-    } catch ({ message }) {
-      dispatch({ type: 'POST_REJECTED_REGISTER', payload: { message } });      
+
+    } catch (e) {
+      console.log(e)
+      dispatch({ type: 'POST_REJECTED_REGISTER', payload: { message: e.message } });      
     }
   }
 
