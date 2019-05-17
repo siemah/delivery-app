@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import InputField from '../widgets/InputField';
 import Button from '../widgets/Button';
 
-//import { login } from '../../store/actions/authActions';
+import { login } from '../../store/actions/authActions';
 
 const CREDENTIALS = {
   email: null,
@@ -21,7 +21,7 @@ const LoginPage = ({ login, history, }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    //login(credentials, doneLogin);
+    login(credentials, doneLogin);
   }
 
   return (
@@ -41,7 +41,7 @@ const mapStateToProps = ({ user }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    //login: (credentials, cb = null) => dispatch(login(credentials, cb)),
+    login: (credentials, cb=null) => dispatch(login(credentials, cb)),
   }
 }
 
