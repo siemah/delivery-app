@@ -8,12 +8,13 @@ import GuestRoute from './routes/GuestRoute';
 import AuthRoute from './routes/AuthRoute';
 // dont forget to pass a location object to GuestRoute and AuthRoute 
 // to avoid weird thing happen when redux work with react-router-dom
-const App = () => {
+const App = ({ location }) => {
+  console.log(location);
   return (
     <>
       <Switch>
-        <GuestRoute path='/register' component={RegisterPage} />
-        <GuestRoute path='/login' component={LoginPage} />
+        <GuestRoute location={location} path='/register' component={RegisterPage} />
+        <GuestRoute location={location} path='/login' component={LoginPage} />
       </Switch>
     </>
   );
