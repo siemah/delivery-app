@@ -32,6 +32,9 @@ const user = {
   login({email, password}) {
     return firebase.auth().signInWithEmailAndPassword(email, password);
   },
+  authObserver(cb){
+    return firebase.auth().onAuthStateChanged(cb);
+  }
 
 }
 export default user; 

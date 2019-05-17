@@ -49,3 +49,11 @@ export const login = (credentials, cb=null) => async (dispatch, getState) => {
     dispatch({type: 'POST_REJECTED_LOGIN', payload: { message: error.message}})
   }
 }
+
+export const authObserver = () => (dispatch) => {
+  console.log("object");
+  userApi.authObserver(function(user) {
+    console.log("observer", user);
+    dispatch({type: 'POST_FULLFILED_LOGIN', payload: {user}})
+  })
+}

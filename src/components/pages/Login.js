@@ -11,7 +11,7 @@ const CREDENTIALS = {
   password: null,
 }
 
-const LoginPage = ({ login, history, }) => {
+const LoginPage = ({ login, history,  }) => {
 
   const [credentials, setCredentials] = useState(CREDENTIALS);
   const onChange = ({ target }) => setCredentials(state => ({ ...state, [target.name]: target.value }))
