@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import RegisterPage from './components/pages/Register';
 import LoginPage from './components/pages/Login';
@@ -10,12 +10,12 @@ import AuthRoute from './routes/AuthRoute';
 // to avoid weird thing happen when redux work with react-router-dom
 const App = () => {
   return (
-    <Router>
+    <>
       <Switch>
         <GuestRoute path='/register' component={RegisterPage} />
         <GuestRoute path='/login' component={LoginPage} />
       </Switch>
-    </Router>
+    </>
   );
 }
 

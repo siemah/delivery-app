@@ -1,6 +1,6 @@
 import React, { useState, } from 'react';
 import { connect } from 'react-redux'
-
+import { Link } from 'react-router-dom';
 import InputField from '../widgets/InputField';
 import Button from '../widgets/Button';
 
@@ -34,7 +34,8 @@ const RegisterPage = ({ register, history, }) => {
       <InputField onChange={onChange} name='email' type='email' label='Email' /><br />
       <InputField onChange={onChange} name='password' type='password' label='Password' /><br />
       <InputField onChange={onChange} name='confPassword' type='password' label='Password Confirmation' /><br />
-      <Button type='submit'>Register</Button>
+      <Button type='submit'>Register</Button> or 
+      <Link to='/login'>login to your account</Link>
     </form>
   )
 }
