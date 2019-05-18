@@ -9,7 +9,6 @@ import AuthRoute from './routes/AuthRoute';
 // dont forget to pass a location object to GuestRoute and AuthRoute 
 // to avoid weird thing happen when redux work with react-router-dom
 const App = ({ location }) => {
-  console.log(location);
   return (
     <>
       <Switch>
