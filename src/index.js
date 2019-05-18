@@ -6,10 +6,13 @@ import mainReducers from './store/reducers/index'
 import reduxThunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 
+import Splash from './components/widgets/Splash';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import userApi from './utils/data/user'
+
+import './assets/css/shared.css';
 
 const store = createStore(
   combineReducers(mainReducers),
@@ -23,7 +26,8 @@ const store = createStore(
 
 const root = document.getElementById('root');
 
-ReactDOM.render(<h1>Splash</h1>, root);
+ReactDOM.render(<Splash />, root);
+
 userApi.authObserver(user => {
   if( user ) {
     let { uid, displayName, email, photoURL, emailVerified, refreshToken } = user;
@@ -40,7 +44,7 @@ userApi.authObserver(user => {
     </Provider>,
     root
   );
-})
+});
 
 
 // If you want your app to work offline and load faster, you can change
