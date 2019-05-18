@@ -20,8 +20,8 @@ const App = ({ location }) => {
         <GuestRoute location={location} path='/register' component={RegisterPage} />
         <GuestRoute location={location} path='/login' component={LoginPage} />
         
-        <AuthRoute location={location} path='/login' component={DashboardPage} />
-        
+        <AuthRoute location={location} path='/dashboard' component={DashboardPage} />
+
       </Switch>
     </>
   );

@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 
 import Splash from './components/widgets/Splash';
 import App from './App';
+import MainMenu from './components/uis/MainMenu';
 import * as serviceWorker from './serviceWorker';
 
 import userApi from './utils/data/user'
@@ -39,6 +40,7 @@ userApi.authObserver(user => {
   ReactDOM.render(
     <Provider store={store}>
       <Router>
+        <MainMenu />
         <Route component={App} />
       </Router>
     </Provider>,
