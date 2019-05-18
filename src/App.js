@@ -3,6 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 
 import RegisterPage from './components/pages/Register';
 import LoginPage from './components/pages/Login';
+import HomePage from './components/pages/Home';
+import DashboardPage from './components/pages/Dashboard';
 
 import GuestRoute from './routes/GuestRoute';
 import AuthRoute from './routes/AuthRoute';
@@ -12,8 +14,14 @@ const App = ({ location }) => {
   return (
     <>
       <Switch>
+
+        <Route exact path='/' component={HomePage} />
+        
         <GuestRoute location={location} path='/register' component={RegisterPage} />
         <GuestRoute location={location} path='/login' component={LoginPage} />
+        
+        <AuthRoute location={location} path='/login' component={DashboardPage} />
+        
       </Switch>
     </>
   );
