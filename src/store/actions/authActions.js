@@ -16,7 +16,8 @@ export const register = (credentials, cb=null) => async (dispatch, getState) => 
       let { email: userEmail, emailVerified, refreshToken, uid, photoURL } = user;
 
       await userApi.setUserProfile(user, `${fname} ${lname}`);
-
+      await userApi.sendEmailVerification(user);
+      
       dispatch({ 
         type: 'POST_FULLFILED_REGISTER', 
         payload: { email: userEmail, emailVerified, refreshToken, uid, photoURL, displayName: `${fname} ${lname}` } 

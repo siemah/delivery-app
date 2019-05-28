@@ -32,9 +32,15 @@ const user = {
   login({email, password}) {
     return firebase.auth().signInWithEmailAndPassword(email, password);
   },
+  /**
+   * @name authObserver
+   * check the current state of user
+   * @param {Function} cb callback function called when request sended @see firebase doc
+   */
   authObserver(cb){
     return firebase.auth().onAuthStateChanged(cb);
-  }
+  },
+  sendEmailVerification: (user) => user.sendEmailVerification(),
 
 }
 export default user; 
