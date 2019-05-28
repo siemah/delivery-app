@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
@@ -25,28 +25,42 @@ const store = createStore(
   )
 );
 
-const root = document.getElementById('root');
-
-ReactDOM.render(<Splash />, root);
-
-userApi.authObserver(user => {
-  if( user ) {
-    let { uid, displayName, email, photoURL, emailVerified, refreshToken } = user;
-    store.dispatch({ 
-      type: 'POST_FULLFILED_LOGIN', 
-      payload: { uid, displayName, email, photoURL, emailVerified, refreshToken } 
+/**
+ * @name MainApp
+ * display a splash screen when trying to check
+ * if user has been logged in or nope 
+ * @return React.Component Splash or whole app
+ */
+const MainApp = () => {
+  const [loading, setLoading] = useState(false);
+  
+  useEffect(() => {
+    userApi.authObserver(user => {
+      if( user ) {
+        let { uid, displayName, email, photoURL, emailVerified, refreshToken } = user;
+        store.dispatch({ 
+          type: 'POST_FULLFILED_LOGIN', 
+          payload: { uid, displayName, email, photoURL, emailVerified, refreshToken } 
+        });
+      }
+      setLoading(true);
     });
-  }
-  ReactDOM.render(
+  }, [loading]);
+
+  if (!loading) return <Splash />
+  else return (
     <Provider store={store}>
       <Router>
         <MainMenu />
         <Route component={App} />
       </Router>
-    </Provider>,
-    root
-  );
-});
+    </Provider>
+  )
+}
+
+ReactDOM.render(<MainApp />, document.getElementById('root'));
+
+
 
 
 // If you want your app to work offline and load faster, you can change
